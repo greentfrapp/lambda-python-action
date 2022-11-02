@@ -15,7 +15,7 @@ deploy_lambda_dependencies () {
     echo "OK"
 
     echo "Publishing dependencies layer..."
-    response=$(aws lambda publish-layer-version --compatible-runtimes python3.8 --layer-name "${INPUT_LAMBDA_LAYER_ARN}" --zip-file fileb://python.zip)
+    response=$(aws lambda publish-layer-version --compatible-runtimes python3.6 python3.7 python3.8 python3.9 --layer-name "${INPUT_LAMBDA_LAYER_ARN}" --zip-file fileb://python.zip)
     VERSION=$(echo $response | jq '.Version')
     rm python.zip > /dev/null 2>&1
     echo "OK"
