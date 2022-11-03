@@ -7,6 +7,9 @@ deploy_lambda_dependencies () {
     echo "Installing dependencies..."
     mkdir -p python > /dev/null 2>&1
     pip install -t ./python/ -r "${INPUT_REQUIREMENTS_TXT}" > /dev/null 2>&1
+    pip uninstall -t ./python/ dataclasses
+    rm -rf ./python/dataclasses-0.6.dist-info
+    rm -rf ./python/dataclasses.py
     echo "OK"
 
     echo "Zipping dependencies..."
