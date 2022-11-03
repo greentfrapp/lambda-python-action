@@ -5,9 +5,8 @@ set -e
 deploy_lambda_dependencies () {
 
     echo "Installing dependencies..."
-    mkdir -p python/lib/python3.8/site-packages > /dev/null 2>&1
-    pip install -t ./python/lib/python3.8/site-packages -r "${INPUT_REQUIREMENTS_TXT}" > /dev/null 2>&1
-    pip uninstall -t ./python/lib/python3.8/site-packages dataclasses > /dev/null 2>&1
+    mkdir -p python > /dev/null 2>&1
+    pip install -t ./python/ -r "${INPUT_REQUIREMENTS_TXT}" > /dev/null 2>&1
     echo "OK"
 
     echo "Zipping dependencies..."
